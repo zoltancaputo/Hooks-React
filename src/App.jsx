@@ -68,7 +68,7 @@ const App = () => {
 }
 
 const App2 = () => {
-  const [resourceType, setResourceType] = useState("posts")
+  const [resourceType, setResourceType] = useState("Exemples")
 
   useEffect(() => {
     console.log("render")
@@ -79,14 +79,14 @@ const App2 = () => {
   };
 
   return(
-    <div>
-      <h1 style={{display: 'flex', alignItems: "center", padding: 20}}>{resourceType}</h1>
-      <div style={{display: 'flex', alignItems: "center", padding: 50 }}>
+    <StyledDiv>
+      <h1>{resourceType}</h1>
+      <div>
         <button onClick={() => changeResourceType('Posts')}>Posts</button>
         <button onClick={() => changeResourceType('Comments')}>Comments</button>
         <button onClick={() => changeResourceType('Todos')}>Todos</button>
       </div>
-    </div>
+    </StyledDiv>
   )
 }
 
