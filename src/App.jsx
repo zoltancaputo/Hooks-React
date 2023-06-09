@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import styled from 'styled-components';
 
 const StyledDiv = styled.div`
@@ -54,7 +54,8 @@ const App = () => {
   const [count, setCount] = useState(0)
 
   const incrementCount = () => {
-    setCount(count + 2)
+    setCount((prevState) => prevState + 1)
+    //setCount(count + 2)
   }
 
   return (
@@ -66,4 +67,28 @@ const App = () => {
   );
 }
 
-export default App;
+const App2 = () => {
+  const [resourceType, setResourceType] = useState("posts")
+
+  useEffect(() => {
+    console.log("render")
+  },[resourceType]);
+
+  const changeResourceType = (resourceType) => {
+    setResourceType(resourceType);
+  };
+
+  return(
+    <div>
+      <h1 style={{display: 'flex', alignItems: "center", padding: 20}}>{resourceType}</h1>
+      <div style={{display: 'flex', alignItems: "center", padding: 50 }}>
+        <button onClick={() => changeResourceType('Posts')}>Posts</button>
+        <button onClick={() => changeResourceType('Comments')}>Comments</button>
+        <button onClick={() => changeResourceType('Todos')}>Todos</button>
+      </div>
+    </div>
+  )
+}
+
+export { App, App2 };
+
